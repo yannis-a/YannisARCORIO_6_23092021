@@ -1962,10 +1962,8 @@ function deleteTagById(elementId) {
 };
 
 
-
-
 /* EVENTS */
-//Add tag and filter
+//Add tag and filter by tags
 $(".dropDownList").on("click", "li", function (event) {
     let tagList = $("#tags");
     let colorBtn;
