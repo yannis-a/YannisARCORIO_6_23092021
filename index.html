@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <link rel="icon" href="public/img/favicon.ico" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+
+    <title>Les petits plats</title>
+</head>
+
+<body>
+    <header class="header">
+        <section class="container">
+            <div class="jumbotron-heading headerImgTitle">
+                <a href="./index.html"><img src="public/img/logo.png" alt="Logo les petits plats" /></a>
+                <h1 class="headerTitle">Les petits plats</h1>
+            </div>
+
+            <!-- Search bar-->
+            <form>
+                <div class="input-group p-05">
+                    <input id="inputSearchAll" class="form-control inputGroupBorder" type="text"
+                        placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+                        onkeyup="filterAllByText()">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default buttonGroupBorder" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- List of tag -->
+        <nav class="container mt-3" id="tags">
+            <!-- tags of ingredient, appliance and ustencil -->
+        </nav>
+
+        <!-- Dropdown -->
+        <div class="container mt-3">
+            <div class="row">
+                <!-- Dropdown ingrédient -->
+                <section class="col-md-3 contents">
+                    <div class="dropdown dropdownSearch">
+                        <div class="input-group w-200 p-05 pb-0 ">
+                            <input id="dropdownInputIngredient" class="form-control inputDropdownIngredient"
+                                placeholder="Ingrédient" type="text"
+                                onkeyup="filterByDropdownText('dropdownInputIngredient', 'dropdownIngredientList')"
+                                aria-label="Ingredient list">
+                            <div class="input-group-btn" onclick="toggleDropdownList('dropdownIngredientList')">
+                                <button class="btn btn-default btnDropdownIngredient" type="submit">
+                                    <img id="icon-down-dropdownIngredientList" src="./public/img/dropdown-icon-down.png" class="icon icon-dropdown-down"
+                                        alt="Dropdown down icon" />
+                                    <img id="icon-up-dropdownIngredientList" src="./public/img/dropdown-icon-up.png" class="icon icon-dropdown-up"
+                                        alt="Dropdown up icon" />
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="dropDownList p-3" id="dropdownIngredientList"></ul>
+                    </div>
+                </section>
+
+                <!-- Dropdown appliance -->
+                <section class="col-md-3 contents">
+                    <div class="dropdown dropdownSearch">
+                        <div class="input-group w-200 p-05 pb-0">
+                            <input id="dropdownInputAppliance" class="form-control inputDropdownAppliance"
+                                placeholder="Appareil" type="text"
+                                onkeyup="filterByDropdownText('dropdownInputAppliance', 'dropdownApplianceList')"
+                                aria-label="Appliance list">
+                            <div class="input-group-btn" onclick="toggleDropdownList('dropdownApplianceList')">
+                                <button class="btn btn-default btnDropdownAppliance" type="submit">
+                                    <img id="icon-down-dropdownApplianceList" src="./public/img/dropdown-icon-down.png" class="icon icon-dropdown-down"
+                                        alt="Dropdown down icon" />
+                                    <img id="icon-up-dropdownApplianceList" src="./public/img/dropdown-icon-up.png" class="icon icon-dropdown-up"
+                                        alt="Dropdown up icon" />
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="dropDownList p-3" id="dropdownApplianceList"></ul>
+                    </div>
+                </section>
+
+                <!-- Dropdown ustensil -->
+                <section class="col-md-3 contents">
+                    <div class="dropdown dropdownSearch">
+                        <div class="input-group w-200 p-05 pb-0 ">
+                            <input id="dropdownInputUstensil" class="form-control inputDropdownUstensil"
+                                placeholder="Ustensiles" type="text"
+                                onkeyup="filterByDropdownText('dropdownInputUstensil', 'dropdownUstensilList')"
+                                aria-label="Ustensile list">
+                            <div class="input-group-btn" onclick="toggleDropdownList('dropdownUstensilList')">
+                                <button class="btn btn-default btnDropdownUstensil" type="submit">
+                                    <img id="icon-down-dropdownUstensilList" src="./public/img/dropdown-icon-down.png" class="icon icon-dropdown-down"
+                                        alt="Dropdown down icon" />
+                                    <img id="icon-up-dropdownUstensilList" src="./public/img/dropdown-icon-up.png" class="icon icon-dropdown-up"
+                                        alt="Dropdown up icon" />
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="dropDownList p-3" id="dropdownUstensilList"></ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </header>
+    <main class="mt-3">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <section class="row" id="recipes">
+                    <!-- location of recipe cards -->
+                </section>
+                <section class="row" id="recipes-not-found">
+                    <p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="src/lib/jquery-3.2.1.slim.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="src/lib/holder.min.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>

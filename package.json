@@ -1,0 +1,33 @@
+{
+  "name": "yannisarcorio_7_23092021",
+  "version": "1.0.0",
+  "description": "Projet 7 : les petits plats",
+  "main": "src/js/main.js",
+  "scripts": {
+    "sass": "sass --watch ./src/sass/main.scss:./public/css/style.css",
+    "build": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yannis-a/YannisARCORIO_7_23092021.git"
+  },
+  "author": "Yannis Arcorio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yannis-a/YannisARCORIO_7_23092021/issues"
+  },
+  "homepage": "https://github.com/yannis-a/YannisARCORIO_7_23092021#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "bootstrap": "^5.1.1",
+    "jquery": "^3.6.0",
+    "peer": "^0.6.1",
+    "sass": "^1.42.1",
+    "uuid": "^8.3.2",
+    "webpack": "^5.54.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.8.0"
+  }
+}

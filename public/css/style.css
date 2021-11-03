@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=DM+Sans");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 14px;
+  overflow-x: hidden;
+  font-family: DM Sans;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+header {
+  margin-top: 2.5rem;
+}
+
+.headerImgTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerTitle {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 47px;
+  text-align: center;
+  color: #D04F4F;
+}
+
+.p-05 {
+  padding: 0.5rem 0;
+}
+
+.no-border {
+  border: none;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.flex {
+  display: flex;
+}
+
+.none {
+  display: none;
+}
+
+.icon {
+  width: 16px;
+  height: auto;
+}
+
+.removeIcon {
+  margin-top: -2px;
+  margin-left: 0.25rem;
+}
+
+.btnGreen {
+  background-color: #68D9A4 !important;
+  border-color: #68D9A4 !important;
+}
+
+.btnBlue {
+  background-color: #3282F7 !important;
+  border-color: #3282F7 !important;
+}
+
+.btnOrange {
+  background-color: #ED6454 !important;
+  border-color: #ED6454 !important;
+}
+
+.btnDefault {
+  background: #3282F7;
+  border-radius: 5px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 17px;
+  color: #FFFFFF;
+  padding: 0.5rem 1rem;
+}
+
+.card-body-style {
+  background: #E7E7E7;
+  border-radius: 0 0 5px 5px;
+}
+
+.card-title {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.card-time {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.clockIcon {
+  margin-top: -2px;
+  margin-left: 0.25rem;
+}
+
+.card-description {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  font-family: "Roboto";
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.card-ingredients {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+}
+.card-ingredients li {
+  margin-top: 3px;
+}
+.card-ingredients span {
+  font-weight: normal;
+}
+
+.contents {
+  display: contents;
+}
+
+.dropdownSearch {
+  padding-bottom: 0;
+  margin-left: 1rem;
+}
+
+.icon-dropdown-up {
+  display: none;
+}
+
+.inputDropdownIngredient, .inputDropdownAppliance, .inputDropdownUstensil {
+  border: none;
+  border-radius: 5px 0 0 5px;
+  padding: 1rem;
+  color: #FFFFFF;
+  font-family: "Lato";
+  background: #3282F7;
+}
+.inputDropdownIngredient:focus, .inputDropdownAppliance:focus, .inputDropdownUstensil:focus {
+  box-shadow: none;
+  color: #FFFFFF;
+}
+.inputDropdownIngredient::placeholder, .inputDropdownAppliance::placeholder, .inputDropdownUstensil::placeholder {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: left;
+  color: #FFFFFF;
+}
+
+.inputDropdownAppliance {
+  background: #68D9A4;
+}
+
+.inputDropdownUstensil {
+  background: #ED6454;
+}
+
+.inputDropdownIngredient:focus {
+  background: #3282F7;
+}
+
+.inputDropdownAppliance:focus {
+  background: #68D9A4;
+}
+
+.inputDropdownUstensil:focus {
+  background: #ED6454;
+}
+
+.btnDropdownIngredient, .btnDropdownAppliance, .btnDropdownUstensil {
+  border-radius: 0 5px 5px 0;
+  padding: 1rem;
+  background: #3282F7;
+}
+
+.btnDropdownAppliance {
+  background: #68D9A4;
+}
+
+.btnDropdownUstensil {
+  background: #ED6454;
+}
+
+.dropDownList {
+  display: none;
+  columns: 4;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -3px;
+  position: absolute;
+  z-index: 20;
+  width: max-content;
+}
+.dropDownList li a {
+  font-family: "Lato";
+  color: #FFFFFF;
+  margin-top: 3px;
+  border-radius: 5px;
+  margin-top: 0px;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  border: none;
+}
+
+#dropdownIngredientList {
+  background-color: #3282F7;
+}
+
+#dropdownApplianceList {
+  background-color: #68D9A4;
+}
+
+#dropdownUstensilList {
+  background-color: #ED6454;
+}
+
+#recipes-not-found {
+  display: none;
+  background: #E7E7E7;
+  padding: 2rem;
+  margin: 0;
+  font-family: "Lato";
+  font-size: 1rem;
+}
+
+.inputGroupBorder {
+  background: #E7E7E7;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  padding: 0.75rem;
+}
+
+.inputGroupBorder::placeholder {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: center;
+  line-height: 22px;
+  color: #000000;
+  opacity: 0.25;
+  text-align: left;
+}
+
+/*# sourceMappingURL=style.css.map */

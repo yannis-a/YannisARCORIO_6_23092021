@@ -1,0 +1,77 @@
+.contents {
+    display: contents;
+}
+.dropdownSearch {
+    padding-bottom: 0;
+    margin-left: 1rem;
+}
+
+.icon-dropdown-up {
+    display: none;
+}
+
+.inputDropdownIngredient, .inputDropdownAppliance, .inputDropdownUstensil {
+    @include inputDropDown;
+    background: $blue;
+}
+.inputDropdownAppliance {
+    background: $green;
+}
+.inputDropdownUstensil {
+    background: $orange;
+}
+
+.inputDropdownIngredient:focus {
+    background: $blue;
+}
+.inputDropdownAppliance:focus {
+    background: $green;
+}
+.inputDropdownUstensil:focus {
+    background: $orange;
+}
+
+.btnDropdownIngredient, .btnDropdownAppliance, .btnDropdownUstensil {
+    @include btnDropdown;
+    background: $blue;
+}
+.btnDropdownAppliance {
+    background: #68D9A4;
+}
+.btnDropdownUstensil {
+    background: #ED6454;
+}
+
+.dropDownList {
+    display: none;
+    columns: 4;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: -3px;
+    position: absolute;
+    z-index: 20;
+    width: max-content;
+
+    li a {
+        font-family: $lato-font;
+        color: $white;
+        margin-top: 3px;
+        border-radius: 5px;
+        margin-top: 0px;
+        padding: 10px;
+        text-decoration: none;
+        display: block;
+        border: none;
+    }
+}
+
+#dropdownIngredientList {
+    background-color: $blue;
+}
+#dropdownApplianceList {
+    background-color: $green;
+}
+#dropdownUstensilList {
+    background-color: $orange;
+}

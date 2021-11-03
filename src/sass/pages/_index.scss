@@ -1,0 +1,26 @@
+#recipes-not-found {
+    display: none;
+    background: #E7E7E7;
+    padding: 2rem;
+    margin: 0;
+    font-family: $lato-font;
+    font-size: 1rem;
+}
+
+.inputGroupBorder {
+    background: $grey;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    padding: .75rem;
+}
+.inputGroupBorder::placeholder {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    line-height: 22px;
+    color: $black;
+    opacity: 0.25;
+    text-align: left;
+}
