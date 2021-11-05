@@ -1874,30 +1874,29 @@ function filterByDropdownText(inputElementId, dropdownListId) {
 function filterAllByText() {
 
     let searchValue = document.getElementById("inputSearchAll").value.toLowerCase();
-
+    let arrayOfRecipesFinded =[];
     if (searchValue.length >= 3) {
         arrayOfRecipesFilteredByText = arrayOfRecipesFilteredByTag && arrayOfRecipesFilteredByTag.size > 0 ? [...arrayOfRecipesFilteredByTag] : arrayOfRecipes;
 
-        //Search recipe by appliance or name
-        recipesByAppliance = arrayOfRecipesFilteredByText.filter(currentElement => {
-            return currentElement.appliance.toLowerCase().includes(searchValue) || currentElement.name.toLowerCase().includes(searchValue) || currentElement.description.toLowerCase().indexOf(searchValue) >= 0;
-        });
+        arrayOfRecipesFilteredByText.forEach(element =>{
+            if(element.appliance.toLowerCase().includes(searchValue) || element.name.toLowerCase().includes(searchValue) || element.description.toLowerCase().indexOf(searchValue) >= 0){//Search recipe by appliances
+                arrayOfRecipesFinded.push(element);
+            }else if(element.ingredients.length > 0){ //Search recipe by ingredients
+                element.ingredients.forEach(ingredient =>{
+                    if(ingredient.ingredient.toLowerCase().includes(searchValue)){
+                        arrayOfRecipesFinded.push(element);
+                    }
+                })
+            }else if(element.ustensils.some(u => u.toLowerCase().includes(searchValue))){//Search recipe by ustensils
+                arrayOfRecipesFinded.push(element);
+            }
+        })
 
-        //Search recipe by ingredients
-        recipesByIngredients = arrayOfRecipesFilteredByText.filter(r => r.ingredients.filter(i => i.ingredient.toLowerCase().includes(searchValue)).length > 0);
-
-        //Search recipe by ustensils
-        recipesByUstensils = arrayOfRecipesFilteredByText.filter(r => {
-            return r.ustensils.some(u => u.toLowerCase().includes(searchValue));
-        });
-
-        arrayOfRecipesFilteredByText = new Set([].concat(recipesByAppliance, recipesByIngredients, recipesByUstensils));
-
-        if (arrayOfRecipesFilteredByText.size == 0) {
+        if (arrayOfRecipesFinded.size == 0) {
             $('#recipes-not-found').css('display', 'block');
             $('.recipe').hide();
         } else {
-            showHideRecipesFiltered(arrayOfRecipesFilteredByText);
+            showHideRecipesFiltered(arrayOfRecipesFinded);
         }
     } else if (searchValue.length <= 2 && arrayOfRecipesFilteredByTag && arrayOfRecipesFilteredByTag.size > 0) {
         showHideRecipesFiltered(arrayOfRecipesFilteredByTag);
