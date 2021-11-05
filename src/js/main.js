@@ -1894,7 +1894,7 @@ function filterAllByText() {
         arrayOfRecipesFilteredByText = new Set([].concat(recipesByAppliance, recipesByIngredients, recipesByUstensils));
 
         if (arrayOfRecipesFilteredByText.size == 0) {
-            $('#recipes-not-found').css('display', 'block');
+            $('#recipes-not-found').show();
             $('.recipe').hide();
         } else {
             showHideRecipesFiltered(arrayOfRecipesFilteredByText);
@@ -1903,6 +1903,7 @@ function filterAllByText() {
         showHideRecipesFiltered(arrayOfRecipesFilteredByTag);
     } else {
         $('.recipe').show();
+        $('#recipes-not-found').hide();
     }
 };
 
@@ -1924,7 +1925,7 @@ function filterRecipesByTags(tags) {
 
         arrayOfRecipesFilteredByTag = new Set([].concat(recipesByAppliance, recipesByIngredients, recipesByUstensils));
         if (arrayOfRecipesFilteredByTag.size == 0) {
-            $('#recipes-not-found').css('display', 'block');
+            $('#recipes-not-found').show();
             $('.recipe').hide();
         } else {
             showHideRecipesFiltered(arrayOfRecipesFilteredByTag);
@@ -1933,11 +1934,13 @@ function filterRecipesByTags(tags) {
         showHideRecipesFiltered(arrayOfRecipesFilteredByText);
     } else {
         $('.recipe').show();
+        $('#recipes-not-found').hide();
     }
 };
 
 //Show and Hide recipes rather than tags
 function showHideRecipesFiltered(recipes) {
+    $('#recipes-not-found').hide();
     if (recipes) {
         $('.recipe').hide();
         recipes.forEach(r => {
