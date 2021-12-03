@@ -1874,23 +1874,31 @@ function filterByDropdownText(inputElementId, dropdownListId) {
 function filterAllByText() {
 
     let searchValue = document.getElementById("inputSearchAll").value.toLowerCase();
-    let arrayOfRecipesFinded =[];
+    let arrayOfRecipesFinded = [];
     if (searchValue.length >= 3) {
         arrayOfRecipesFilteredByText = arrayOfRecipesFilteredByTag && arrayOfRecipesFilteredByTag.size > 0 ? [...arrayOfRecipesFilteredByTag] : arrayOfRecipes;
 
-        arrayOfRecipesFilteredByText.forEach(element =>{
-            if(element.appliance.toLowerCase().includes(searchValue) || element.name.toLowerCase().includes(searchValue) || element.description.toLowerCase().indexOf(searchValue) >= 0){//Search recipe by appliances
+
+        for (let i = 0; i < arrayOfRecipesFilteredByText.length; i++) {
+            const element = arrayOfRecipesFilteredByText[i];
+            if (element.appliance.toLowerCase().includes(searchValue) || element.name.toLowerCase().includes(searchValue) || element.description.toLowerCase().indexOf(searchValue) >= 0) {//Search recipe by appliances
                 arrayOfRecipesFinded.push(element);
-            }else if(element.ingredients.length > 0){ //Search recipe by ingredients
-                element.ingredients.forEach(ingredient =>{
-                    if(ingredient.ingredient.toLowerCase().includes(searchValue)){
+            } else if (element.ingredients.length > 0) { //Search recipe by ingredients
+                for (let j = 0; j < element.ingredients.length; j++) {
+                    const ingredient = element.ingredients[j];
+                    if (ingredient.ingredient.toLowerCase().includes(searchValue)) {
+                        arrayOfRecipesFinded.push(ingredient);
+                    }
+                }
+            } else if (element.ustensils.length>0){
+                for (let w = 0; w < element.ustensils.length; w++) {
+                    const ustensil = element.ustensils[w];
+                    if(ustensil.toLowerCase() == searchValue){
                         arrayOfRecipesFinded.push(element);
                     }
-                })
-            }else if(element.ustensils.some(u => u.toLowerCase().includes(searchValue))){//Search recipe by ustensils
-                arrayOfRecipesFinded.push(element);
+                }
             }
-        })
+        }
 
         if (arrayOfRecipesFinded.size == 0) {
             $('#recipes-not-found').show();
