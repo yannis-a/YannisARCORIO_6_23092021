@@ -1735,9 +1735,12 @@ let arrayOfTagValue = [];
 
 
 /* INIT */
-setArrayOfRecipes(recipes);
-setSpecificArray(recipes);
-setRecipesCardHtml(recipes);
+$(function () {
+    setArrayOfRecipes(recipes);
+    setSpecificArray(recipes);
+    setRecipesCardHtml(recipes);
+})
+
 
 
 /* FUNCTIONS */
@@ -1764,6 +1767,7 @@ function setSpecificArray(recipes) {
 
 //Init tags in dropdown list HTML
 function setTags() {
+
     //Add list of ingredient
     arrayOfIngredients.forEach((ingredient, index) => {
         $('#dropdownIngredientList').append(`<li><a href="#" id="ingredient-${index}">${ingredient}</a></li>`);
@@ -1777,6 +1781,41 @@ function setTags() {
         $('#dropdownUstensilList').append(`<li><a href="#" id="ustensil-${index}">${ustensil}</a></li>`);
     });
 };
+
+function setTagsFiltered(recipes) {
+    let arrayIngredients = [];
+    let arrayAppliance = [];
+    let arrayUstensils = [];
+
+    // empty all lists of dropdown
+    $('#dropdownIngredientList').empty();
+    $('#dropdownApplianceList').empty();
+    $('#dropdownUstensilList').empty();
+
+    recipes.forEach(r => {
+        console.log(r)
+        if (arrayAppliance.indexOf(r.appliance) === -1) arrayAppliance.push(r.appliance);
+
+        r.ustensils.map((ustensil) => {
+            if (!arrayUstensils.includes(ustensil)) arrayUstensils.push(ustensil);
+        });
+
+        r.ingredients.forEach(i => {
+            if (arrayIngredients.indexOf(i.ingredient) === -1) arrayIngredients.push(i.ingredient);
+        });
+    });
+
+    //Add list 
+    arrayIngredients.forEach((ingredient, index) => {
+        $('#dropdownIngredientList').append(`<li><a href="#" id="ingredient-${index}">${ingredient}</a></li>`);
+    });
+    arrayAppliance.forEach((appliance, index) => {
+        $('#dropdownApplianceList').append(`<li><a href="#" id="appliance-${index}">${appliance}</a></li>`);
+    });
+    arrayUstensils.forEach((ustensil, index) => {
+        $('#dropdownUstensilList').append(`<li><a href="#" id="ustensil-${index}">${ustensil}</a></li>`);
+    });
+}
 
 //Add HTML Recipes
 function setRecipesCardHtml(recipes) {
@@ -1873,7 +1912,6 @@ function filterDropdown(textFilter, dropdownListId) {
     let ul, li, a, i, txtValue;
     let foundValue = [];
 
-console.log(textFilter)
     if (textFilter.length >= 3) {
         $(`#${dropdownListId}`).css("display", "flex");
         ul = document.getElementById(dropdownListId);
@@ -1931,10 +1969,10 @@ function filterAllByText() {
                         arrayOfRecipesFinded.push(ingredient);
                     }
                 }
-            } else if (element.ustensils.length>0){
+            } else if (element.ustensils.length > 0) {
                 for (let w = 0; w < element.ustensils.length; w++) {
                     const ustensil = element.ustensils[w];
-                    if(ustensil.toLowerCase() == searchValue){
+                    if (ustensil.toLowerCase() == searchValue) {
                         arrayOfRecipesFinded.push(element);
                     }
                 }
@@ -1946,12 +1984,11 @@ function filterAllByText() {
             $('.recipe').hide();
         } else {
             showHideRecipesFiltered(arrayOfRecipesFinded);
-            filterDropdown(searchValue, 'dropdownUstensilList')
-            filterDropdown(searchValue, 'dropdownApplianceList')
-            filterDropdown(searchValue, 'dropdownIngredientList')
+            setTagsFiltered(arrayOfRecipesFinded)
         }
     } else if (searchValue.length <= 2 && arrayOfRecipesFilteredByTag && arrayOfRecipesFilteredByTag.size > 0) {
         showHideRecipesFiltered(arrayOfRecipesFilteredByTag);
+        setTags()
     } else {
         $('.recipe').show();
         $('#recipes-not-found').hide();
