@@ -1868,6 +1868,47 @@ function filterByDropdownText(inputElementId, dropdownListId) {
     }
 };
 
+// Show / Hide tag on dropdown list
+function filterDropdown(textFilter, dropdownListId) {
+    let ul, li, a, i, txtValue;
+    let foundValue = [];
+
+console.log(textFilter)
+    if (textFilter.length >= 3) {
+        $(`#${dropdownListId}`).css("display", "flex");
+        ul = document.getElementById(dropdownListId);
+        li = ul.getElementsByTagName("li");
+
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(textFilter) > -1) {
+                foundValue.push(true);
+                li[i].style.display = "";
+            } else {
+                foundValue.push(false);
+                li[i].style.display = "none";
+            }
+            if (i == li.length - 1) {
+                if (foundValue.includes(true)) {
+                    toggleIconDropdown(foundValue.includes(true), dropdownListId);
+                } else {
+                    toggleIconDropdown(false, dropdownListId);
+                }
+            }
+        }
+    } else {
+        //Reset all dropdownList
+        ul = document.getElementById(dropdownListId);
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            li[i].style.display = 'inherit';
+        }
+        $(`#${dropdownListId}`).css("display", "none");
+        toggleIconDropdown(false, dropdownListId);
+    }
+};
+
 
 //Show list by text field
 //Search for recipes in: recipe title, recipe ingredients list, recipe description
@@ -1905,6 +1946,9 @@ function filterAllByText() {
             $('.recipe').hide();
         } else {
             showHideRecipesFiltered(arrayOfRecipesFinded);
+            filterDropdown(searchValue, 'dropdownUstensilList')
+            filterDropdown(searchValue, 'dropdownApplianceList')
+            filterDropdown(searchValue, 'dropdownIngredientList')
         }
     } else if (searchValue.length <= 2 && arrayOfRecipesFilteredByTag && arrayOfRecipesFilteredByTag.size > 0) {
         showHideRecipesFiltered(arrayOfRecipesFilteredByTag);
