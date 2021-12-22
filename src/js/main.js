@@ -1789,7 +1789,6 @@ function setTagsFiltered(recipes) {
     $('#dropdownUstensilList').empty();
 
     recipes.forEach(r => {
-        console.log(r)
         if (arrayAppliance.indexOf(r.appliance) === -1) arrayAppliance.push(r.appliance);
 
         r.ustensils.map((ustensil) => {
@@ -1966,12 +1965,15 @@ function filterRecipesByTags(tags) {
             $('.recipe').hide();
         } else {
             showHideRecipesFiltered(arrayOfRecipesFilteredByTag);
+            setTagsFiltered(arrayOfRecipesFilteredByTag);
         }
     } else if (arrayOfRecipesFilteredByText && arrayOfRecipesFilteredByText.size > 0) {
         showHideRecipesFiltered(arrayOfRecipesFilteredByText);
+        setTagsFiltered(arrayOfRecipesFilteredByText);
     } else {
         $('.recipe').show();
         $('#recipes-not-found').hide();
+        setTags();
     }
 };
 
@@ -2025,4 +2027,5 @@ $(".dropDownList").on("click", "li", function (event) {
         `);
     }
     filterRecipesByTags(arrayOfTagValue);
+
 });
